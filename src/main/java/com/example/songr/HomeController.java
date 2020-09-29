@@ -2,8 +2,7 @@ package com.example.songr;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
@@ -13,9 +12,17 @@ public class HomeController {
     }
 
     @GetMapping("/hello")
-    public String helloWorld() {
+    public String helloWorld(Model model, String name) {
+        model.addAttribute("name", name);
         return "hello";
     }
+
+    @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    public String postHelloWorld(@ModelAttribute("name")String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello";
+    }
+
     @GetMapping("/capitalize/{message}")
     public String capitalize(Model model, @PathVariable String message) {
         model.addAttribute("message", message.toUpperCase());
