@@ -22,4 +22,4 @@ Open the project at the root level in IntelliJ. Click the green triagle that sig
 ---
 
 ### Change Log
-1.0: *Initial Release* - 28 September 2010  
+1.0: *Initial Release* - 28 September 2020  
