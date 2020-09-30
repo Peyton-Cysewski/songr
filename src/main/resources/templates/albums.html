@@ -5,21 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Artist</th>
-        <th>Songs</th>
-        <th>Length</th>
-        <th>Cover (URL)</th>
-    </tr>
-    <tr th:each="album : ${albumsList}">
-        <td th:text="${album.title}"></td>
-        <td th:text="${album.artist}"></td>
-        <td th:text="${album.songCount}"></td>
-        <td th:text="${album.length}"></td>
-        <td th:text="${album.imageURL}"></td>
-    </tr>
-</table>
+    <form action="/albums" method="post">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="artist" placeholder="Artist">
+        <input type="number" name="songCount" placeholder="Song Count">
+        <input type="number" name="length" placeholder="Length in milliseconds">
+        <input type="text" name="imageUrl" placeholder="Image URL">
+    </form>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Songs</th>
+            <th>Length</th>
+            <th>Cover (URL)</th>
+        </tr>
+        <tr th:each="album : ${albumsList}">
+            <td th:text="${album.title}"></td>
+            <td th:text="${album.artist}"></td>
+            <td th:text="${album.songCount}"></td>
+            <td th:text="${album.length}"></td>
+            <td th:text="${album.imageURL}"></td>
+        </tr>
+    </table>
 </body>
 </html>
