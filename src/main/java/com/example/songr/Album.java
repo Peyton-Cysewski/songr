@@ -1,6 +1,16 @@
 package com.example.songr;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Album {
+    @Id // id SERIAL PRIMARY KEY
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+
     private String title;
     private String artist;
     private int songCount;
@@ -14,6 +24,8 @@ public class Album {
         this.length = length;
         this.imageURL = imageURL;
     }
+
+    public Album() {}
 
     public String getTitle() {
         return title;
