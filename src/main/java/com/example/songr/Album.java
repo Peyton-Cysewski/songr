@@ -1,9 +1,8 @@
 package com.example.songr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -17,6 +16,11 @@ public class Album {
     private int length;
     private String imageURL;
 
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    private List<Song> songs = new ArrayList();
+
+    public Album() {}
+
     public Album(String title, String artist, int songCount, int length, String imageURL) {
         this.title = title;
         this.artist = artist;
@@ -25,12 +29,7 @@ public class Album {
         this.imageURL = imageURL;
     }
 
-    public Album() {}
-
-    public String getTitle() {
-        return title;
-    }
-
+    public String getTitle() { return title; }
     public void setTitle(String title) {
         this.title = title;
     }
@@ -38,7 +37,6 @@ public class Album {
     public String getArtist() {
         return artist;
     }
-
     public void setArtist(String artist) {
         this.artist = artist;
     }
@@ -46,7 +44,6 @@ public class Album {
     public int getSongCount() {
         return songCount;
     }
-
     public void setSongCount(int songCount) {
         this.songCount = songCount;
     }
@@ -54,7 +51,6 @@ public class Album {
     public int getLength() {
         return length;
     }
-
     public void setLength(int length) {
         this.length = length;
     }
@@ -62,7 +58,6 @@ public class Album {
     public String getImageURL() {
         return imageURL;
     }
-
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
